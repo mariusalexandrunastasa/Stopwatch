@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
+    <Chronometer
         android:id="@+id/elapsedTime"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/borderless_ripple"
-        android:clickable="true"
-        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
         android:text="@string/Timer"
         android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
