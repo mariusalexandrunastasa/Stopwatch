@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             // notification implementation
             NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"Timer Notification");
             Intent intent = new Intent(getBaseContext(),MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_CANCEL_CURRENT);
             builder.setUsesChronometer(true);
             builder.setSmallIcon(R.drawable.ic_baseline_add_alert_24);
@@ -82,7 +83,5 @@ public class MainActivity extends AppCompatActivity {
             timer.setBase(SystemClock.elapsedRealtime());
             base.set(0);
         });
-
     }
-
 }
