@@ -1,6 +1,8 @@
 package com.example.stopwatch;
 
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -56,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(),MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_CANCEL_CURRENT);
-            builder.setUsesChronometer(true);
             builder.setSmallIcon(R.drawable.ic_baseline_add_alert_24);
             builder.setContentTitle("Stopwatch");
             builder.setAutoCancel(true);
@@ -72,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             loadingIcon.setVisibility(View.INVISIBLE);
             base.set(timer.getBase() - SystemClock.elapsedRealtime());
             timer.stop();
+
+            // cancel notification
+            NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(1);
         });
 
         buttonReset.setOnClickListener(v -> {
@@ -82,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
             timer.stop();
             timer.setBase(SystemClock.elapsedRealtime());
             base.set(0);
+
+            // cancel notification
+            NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            nMgr.cancel(1);
         });
     }
 }
